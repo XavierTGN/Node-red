@@ -10,3 +10,7 @@ Solucio: borrar els cookies de els ultims dies.
       Seleccione Configuración y, a continuación, haga clic en Privacidad y servicios.
       En Borrar datos de navegación, seleccione Elegir qué desea borrar.
       Marque Imágenes y archivos en caché, cookies y otros datos del sitio y, a continuación, seleccione Borrar ahora
+
+
+Editar el nom del dispositius Zigbee.
+      nano /opt/zigbee2mqtt/data/configuration.yaml
