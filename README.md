@@ -13,4 +13,5 @@ Solucio: borrar els cookies de els ultims dies.
 
 
 Editar el nom del dispositius Zigbee.
+
       nano /opt/zigbee2mqtt/data/configuration.yaml
