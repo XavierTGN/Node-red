@@ -15,3 +15,12 @@ Solucio: borrar els cookies de els ultims dies.
 Editar el nom del dispositius Zigbee.
 
       nano /opt/zigbee2mqtt/data/configuration.yaml
+Refrescar el access a Alexa.
+
+      http://192.168.1.186:3456
+            nom : xbc@tinet.cat
+            password: viscaTarraco25
+Copia de la base de dades per el Xavi
+
+      mysqldump -uroot -proot --databases IOT > ~/mysqldump.sql
+
