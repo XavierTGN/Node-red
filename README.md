@@ -27,6 +27,7 @@ Copia de la base de dades per el Xavi
 El Telegram no funciona:
       Anar a telegram @botFather.
       escriu: /mybots
+      
       <img width="333" alt="image" src="https://github.com/XavierTGN/Node-red/assets/57724918/08ef3514-e0d8-4c11-ac40-cd32479c8e8b">
       
       Here is the token for bot Raspberry_Xavier 
