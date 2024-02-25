@@ -28,6 +28,10 @@ El Telegram no funciona:
       Anar a telegram @botFather.
       escriu: /mybots
       
+      ![image](https://github.com/XavierTGN/Node-red/assets/57724918/374450d7-20f9-4dfe-9dc1-9d0d036927d6)
+
+      
+
 
       Here is the token for bot Raspberry_Xavier 
       @Xavier_Banus_bot: 
