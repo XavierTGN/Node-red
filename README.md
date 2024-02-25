@@ -28,9 +28,9 @@ El Telegram no funciona:
       Anar a telegram @botFather.
       escriu: /mybots
       
-      ![image](https://github.com/XavierTGN/Node-red/assets/57724918/374450d7-20f9-4dfe-9dc1-9d0d036927d6)
-
-      
+      Selecciona API-TOKEn y retorna el numero del Token
+      Copia el numero
+      1234366419:AAFSLxcywWylglb43iND2sJH774z-WI_FfA     
 
 
       Here is the token for bot Raspberry_Xavier 
@@ -38,4 +38,4 @@ El Telegram no funciona:
       Nou Token
       1234366419:AAFSLxcywWylglb43iND2sJH774z-WI_FfA
 
-      Copiarlo a Node-red 
+      Copiarlo a la configuracio de telegram apafrtar Token:  
