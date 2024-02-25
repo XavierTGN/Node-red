@@ -38,4 +38,4 @@ El Telegram no funciona:
       Nou Token
       1234366419:AAFSLxcywWylglb43iND2sJH774z-WI_FfA
 
-      Copiarlo a la configuracio de telegram apafrtar Token:  
+      Copiarlo a la configuracio de telegram apartat Token:  
