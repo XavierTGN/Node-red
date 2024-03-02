@@ -1,4 +1,5 @@
 # Node-red
+Error amb el MariaDb, 
 Node_red persistencia de les dades
 
 Guarda la configuracio a : /data/home/nodered/.node-red/
