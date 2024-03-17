@@ -40,3 +40,6 @@ El Telegram no funciona:
       1234366419:AAFSLxcywWylglb43iND2sJH774z-WI_FfA
 
       Copiarlo a la configuracio de telegram apartat Token:  
+      
+Instalacio de Mosquitto
+      https://www.zigbee2mqtt.io/guide/installation/01_linux.html
