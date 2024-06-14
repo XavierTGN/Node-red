@@ -16,3 +16,7 @@ Configurar xarxa.
         #static domain_name_servers=192.168.0.1 8.8.8.8 fd51:42f8:caae:d92e::1
 
 Comprovar amb ifconfig.
+
+Actualizar.
+    sudo apt update
+    sudo apt dist-upgrade -y
