@@ -42,4 +42,6 @@ El Telegram no funciona:
       Copiarlo a la configuracio de telegram apartat Token:  
       
 Instalacio de Mosquitto
+      USB SONOFF  Zigbee 3.0 Dongle Plus  Model:ZBDongle-P  Connection: Zigbee 3.0
+      
       https://www.zigbee2mqtt.io/guide/installation/01_linux.html
