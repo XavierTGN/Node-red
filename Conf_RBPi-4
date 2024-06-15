@@ -20,3 +20,69 @@ Comprovar amb ifconfig.
 Actualizar.
     sudo apt update
     sudo apt dist-upgrade -y
+
+
+
+
+    Instalar MariaDb,PhpMyadmin, Apache
+        https://www.youtube.com/watch?v=sjtwZz5EPUY
+        Comandos explicacio del video sensa el "bash-"
+
+    Comandos:
+    bash- sudo apt install mariadb-server
+    bash- sudo mysql_secure_installation
+    bash- systemctl status mariadb.service
+    
+    bash- sudo apt install php libapache2-mod-php php-mysql
+    bash- sudo nano /etc/apache2/mods-enabled/dir.conf
+    text-
+    ##
+    IfModule mod_dir.c
+        DirectoryIndex index.html index.cgi index.pl index.php index.xhtml index.htm
+    /IfModule
+    
+    change to --
+    
+    IfModule mod_dir.c
+        DirectoryIndex index.php index.html index.cgi index.pl index.xhtml index.htm
+    /IfModule
+    ##
+    bash- sudo systemctl restart apache2
+    bash- sudo apt install phpmyadmin
+    
+    ERROR 1698 (28000): Access denied for user ‘root’@’localhost’
+    bash- sudo mysql -u root -p
+    sql- USE mysql;
+    sql- SELECT user, plugin FROM user;
+    sql- UPDATE user SET plugin="mysql_native_password" WHERE user="root";
+    sql- FLUSH PRIVILEGES;
+    sql- exit
+    
+    Cambio de puerto phpmyadmin:
+    bash- sudo nano /etc/apache2/ports.conf
+    
+    Comandos importantes para permitir acceso remoto:
+    bash- sudo nano /etc/mysql/mysql.conf.d/mysqld.cnf
+    o
+    bash- sudo nano /etc/mysql/mariadb.conf.d/50-server.cnf
+    Cambiar bind andress a = 0.0.0.0
+    bash- sudo systemctl restart mysql
+    o
+    bash- sudo systemctl restart mariadb
+    bash- sudo ufw allow 3306
+
+Per importar base de dades a la nova:
+  Crear la Base de dades nova IOT
+  Entrar a dins i importar. El fitxer es masa gran i es te que cambiar es seguent valor:
+          Luego asegúrese de que el valor de upload_max_filesizesea menor que post_max_size.
+          
+          El orden de mayor a menor debería ser:
+          
+              memory_limit no el he tocat
+              post_max_size  65M
+              upload_max_filesize  63M
+      Mofificar al fitxer:
+      sudo nano /etc/php/7.4/apache2/php.ini
+      Guardar i: sudo /etc/init.d/apache2 restart
+      Ara ja funcionara la importacio.
+  
