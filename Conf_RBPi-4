@@ -1,6 +1,12 @@
 Instalar Raspbian
+Instalat amb Raspberry Pi image. La opcio Raspberry 64 bit Lite, no desktop
+amb sd de 32Gb.
+Actualizar.
+    sudo apt update
+    sudo apt dist-upgrade -y
 
 Configurar xarxa.
+  sudo apt-get install dhcpcd
   sudo nano /etc/dhcpcd.conf
   I cambian a :
         interface eth0
@@ -14,17 +20,18 @@ Configurar xarxa.
         #static ip6_address=fd51:42f8:caae:d92e::ff/64
         static routers=192.168.1.1
         #static domain_name_servers=192.168.0.1 8.8.8.8 fd51:42f8:caae:d92e::1
-
 Comprovar amb ifconfig.
 
-Actualizar.
-    sudo apt update
-    sudo apt dist-upgrade -y
+***INSTALAR MQTT I ZIGBEE2MQTT
+  sudo apt install -y mosquitto mosquitto-clients
+  sudo nano /etc/mosquitto/mosquitto.conf
+      agefit al final:
+        listener 1883
+        allow_anonymous true
+  sudo service mosquitto restart
+  Funciona amb mosquitto_sub i mosquitto_pub--->OK
 
-
-
-
-    Instalar MariaDb,PhpMyadmin, Apache
+***Instalar MariaDb,PhpMyadmin, Apache
         https://www.youtube.com/watch?v=sjtwZz5EPUY
         Comandos explicacio del video sensa el "bash-"
 
