@@ -33,6 +33,7 @@ Comprovar amb ifconfig.
 
 **  Instalar ZIGBEE2MQTT
         Determine location of the adapter and checking user permissions
+/dev/serial/by-id/usb-ITead_Sonoff_Zigbee_3.0_USB_Dongle_Plus_da905f533186ec11bf0e5b1719c2d21c-if00
             /dev/serial/by-id/usb-ITead_Sonoff_Zigbee_3.0_USB_Dongle_Plus_da905f533186ec11bf0e5b1719c2d21c-if00-port0
         Instalar:
             # Set up Node.js repository and install Node.js + required dependencies
@@ -61,7 +62,103 @@ Comprovar amb ifconfig.
             
             # Build the app
             npm run build
+********************  configuration.yaml *******************
+
+        external_converters:
+          - FUM.js
+        homeassistant: false
+        permit_join: true
+        zigbee_herdsman_debug: true
+        allow_anonymous: true
+        mqtt:
+          base_topic: zigbee2mqtt
+          server: mqtt://localhost
+        serial:
+          port: >-
+            /dev/serial/by-id/usb-ITead_Sonoff_Zigbee_3.0_USB_Dongle_Plus_da905f533186ec11bf0e5b1719c2d21c-if00-port0
+        devices:
+          '0xa4c138330db4c904':
+            friendly_name: PORTA-1
+          '0x00124b0024cd079a':
+            friendly_name: TI-1
+          '0xa4c1382def572850':
+            friendly_name: FUM-1
+          '0x847127fffefe66bb':
+            friendly_name: TID-1
+          '0x00124b0022cf0fca':
+            friendly_name: TI-2
+          '0x00124b0022d2d9a6':
+            friendly_name: TI-3
+          '0xa4c138be4464d220':
+            friendly_name: TID-2
+
 ********************************************************************************
+*********   fum.js *************************************************************
+            const fz = require('zigbee-herdsman-converters/converters/fromZigbee');
+            const tz = require('zigbee-herdsman-converters/converters/toZigbee');
+            const exposes = require('zigbee-herdsman-converters/lib/exposes');
+            const reporting = require('zigbee-herdsman-converters/lib/reporting');
+            const extend = require('zigbee-herdsman-converters/lib/extend');
+            const ota = require('zigbee-herdsman-converters/lib/ota');
+            const e = exposes.presets;
+            const ea = exposes.access;
+            const tuya = require('zigbee-herdsman-converters/lib/tuya');
+            
+            const fzLocal = {
+                tuya_smoke: {
+                    cluster: 'manuSpecificTuya',
+                    type: ['commandSetDataResponse', 'commandDataReport', 'commandDataResponse'],
+                    convert: (model, msg, publish, options, meta) => {
+                        const result = {};
+                        for (const dpValue of msg.data.dpValues) {
+                            const dp = dpValue.dp;
+                            const value = tuya.getDataValue(dpValue);
+                            switch (dp) {
+                            case tuya.dataPoints.state:
+                                result.smoke = value === 0;
+                                break;
+                            case 4:
+                                result.tamper = value;
+                                break;
+                            case 14:
+                                result.battery_low = value === 0;
+                                break;
+                            case 16:
+                                result.muffling = value;
+                                break;
+                            default:
+                                meta.logger.warn(`zigbee-herdsman-converters:tuya_smoke: Unrecognized DP #${dp} with data ${JSON.stringify(dpValue)}`);
+                            }
+                        }
+                        return result;
+                    },
+                }
+            }
+            
+            const definition = {
+                zigbeeModel: ['ntcy3xu1'],
+                fingerprint: [{modelID: 'TS0601', manufacturerName: '_TZE200_ntcy3xu1'}],
+                model: 'TS0601_smoke2',
+                vendor: 'TuYa',
+                description: 'Smoke sensor',
+                fromZigbee: [fzLocal.tuya_smoke],
+                toZigbee: [
+                    {
+                        key: ['muffling'],
+                        convertSet: async (entity, key, value, meta) => {
+                            await tuya.sendDataPointBool(entity, 16, value);
+                        }
+                    }
+                ],
+                exposes: [e.smoke(), e.tamper(), e.battery_low(), exposes.binary('muffling', ea.STATE_SET, true, false)],
+            };
+            
+            module.exports = definition;
+********************************************************************************
+
+
+
+
 
 
 ***Instalar MariaDb,PhpMyadmin, Apache
