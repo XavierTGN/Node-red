@@ -155,8 +155,23 @@ Comprovar amb ifconfig.
             
             module.exports = definition;
 ********************************************************************************
+************  sudo nano /etc/systemd/system/zigbee2mqtt.service ****************
+[Unit]
+Description=zigbee2mqtt
+After=network.target
 
+[Service]
+ExecStart=/usr/bin/sudo npm start
+WorkingDirectory=/opt/zigbee2mqtt
+StandardOutput=inherit
+# Or use StandardOutput=null if you don't want Zigbee2MQTT messages filling syslog, for more option>
+StandardError=inherit
+Restart=always
+User=xavier
 
+[Install]
+WantedBy=multi-user.target
+*******************************************************************************
 
 
 
