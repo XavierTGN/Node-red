@@ -5,7 +5,7 @@ Actualizar.
     sudo apt update
     sudo apt dist-upgrade -y
 
-Configurar xarxa.
+Configurar xarxa. *************************************************************
   sudo apt-get install dhcpcd
   sudo nano /etc/dhcpcd.conf
   I cambian a :
