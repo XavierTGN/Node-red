@@ -195,10 +195,10 @@ WantedBy=multi-user.target
     
     change to --
     
-    IfModule mod_dir.c
+
         DirectoryIndex index.php index.html index.cgi index.pl index.xhtml index.htm
-    /IfModule
-    ##
+
+##
     bash- sudo systemctl restart apache2
     bash- sudo apt install phpmyadmin
     
