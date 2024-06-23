@@ -237,4 +237,23 @@ Per importar base de dades a la nova:
       sudo nano /etc/php/7.4/apache2/php.ini
       Guardar i: sudo /etc/init.d/apache2 restart
       Ara ja funcionara la importacio.
+
+************************************************************
+****** PROBLEMES AMB EL PHPMYADM ***************************
+
+He tingut alguns problemes al entrar al password donaba un error, el he solventat amb algun de aquestes
+instruccion, ja no se:
+  360  sudo install phpmyadmin
+  361  sudo apt install phpmyadmin
+  362  nano /etc/apache2/conf-available/phpmyadmin.conf
+  363  su
+  364  sudo su
+  365  sudo mysql
+  366  whoami
+  367  mysql -uroot -hlocalhost
+  368  sudo mysql -uroot -hlocalhost
+  369  sudo mysql_secure_installation
+  370  sudo mysql -uroot -hlocalhost
+  371  mysql -uroot -hlocalhost
+
   
