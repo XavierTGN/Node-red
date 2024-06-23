@@ -1,1 +1,14 @@
+IMportar el flows a una instalacio nova.
 
+Problema: al importar diu qye faltas las palletes.
+
+Solucio:
+    * Buscar la paquets que falta:
+    	direcori /home/xavier/.node-red
+    	npm outdate
+    Actualitzar els paquets:
+    	sudo npm update
+Parar node red   
+    xavier@raspberrypi4:~/.node-red $ sudo npm update
+arrancar node-red
+Funciona be!!!
