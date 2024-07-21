@@ -7,8 +7,9 @@ Guarda la configuracio a : /data/home/nodered/.node-red/
 Problema: no es pot fer resize de els layout en dashboar.
 Solucio: borrar els cookies de els ultims dies.
 
+
       ¿Cómo puedo eliminar las cookies de Microsoft Edge?
-      Seleccione Configuración y, a continuación, haga clic en Privacidad y servicios.
+      Seleccione Configuración y, a continuación, haga clic en "Eliminar datos de exploración".
       En Borrar datos de navegación, seleccione Elegir qué desea borrar.
       Marque Imágenes y archivos en caché, cookies y otros datos del sitio y, a continuación, seleccione Borrar ahora
 
